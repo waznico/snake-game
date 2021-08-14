@@ -14,15 +14,18 @@ namespace SnakeGame
             var displaySize = new Vector2D(100, 50);
             var renderer = new ConsoleRenderer(displaySize);
 
-            var map = new Map(displaySize);
-
-            var snake = new Snake(new Vector2D(1, 25));
-            var collectable = new Apple(new Vector2D(5, 13));
-
             bool running = true;
             Console.WriteLine("Press any key to start...");
             Console.ReadKey();
             Console.Clear();
+
+            var map = new Map(displaySize);
+            var snake = new Snake(new Vector2D(1, 25));
+
+            var random = new Random();
+
+            ICollectable collectable = CreateCollectable(new Vector2D(random.Next(1, displaySize.X - 1), random.Next(1, displaySize.Y - 1)));
+
             do
             {
                 if (Console.KeyAvailable)
@@ -51,9 +54,7 @@ namespace SnakeGame
                 snake.Move();
                 if (snake.Head.X == collectable.Elements[0].X && snake.Head.Y == collectable.Elements[0].Y)
                 {
-                    var random = new Random();
-
-                    collectable = new Apple(new Vector2D(random.Next(1, displaySize.X - 1), random.Next(1, displaySize.Y - 1)));
+                    collectable = CreateCollectable(new Vector2D(random.Next(1, displaySize.X - 1), random.Next(1, displaySize.Y - 1)));
                     snake.Grow(1);
                 }
 
@@ -76,6 +77,25 @@ namespace SnakeGame
 
 
             } while (running);
+        }
+
+        private static ICollectable CreateCollectable(Vector2D position)
+        {
+            var random = new Random();
+            var pickValue = random.Next(0, 3);
+
+            switch ((CollectableItems)pickValue)
+            {
+                case CollectableItems.Apple:
+                    return new Apple(position);
+                case CollectableItems.Banana:
+                    return new Banana(position);
+                case CollectableItems.Cherry:
+                    return new Cherry(position);
+                default:
+                    return null;
+
+            }
         }
     }
 }
