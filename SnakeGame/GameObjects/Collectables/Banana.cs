@@ -4,7 +4,7 @@ using SnakeGame.Base;
 
 namespace SnakeGame.GameObjects.Collectables
 {
-    public class Banana : ICollectable, IDisposable
+    public class Banana : ICollectable
     {
         public int ScoreValue { get; private set; }
 
@@ -18,12 +18,6 @@ namespace SnakeGame.GameObjects.Collectables
             Elements.Add(position);
             Symbol = 'B';
             ScoreValue = 2;
-        }
-
-        public void Dispose()
-        {
-            Dispose();
-            GC.SuppressFinalize(this);
         }
     }
 }
