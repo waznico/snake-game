@@ -1,5 +1,4 @@
-﻿using System;
-namespace SnakeGame.Base
+﻿namespace SnakeGame.Base
 {
     public class Vector2D
     {
