@@ -85,10 +85,12 @@ namespace SnakeGame.Display
         /// </summary>
         public void ExecuteRendering()
         {
+            Console.SetCursorPosition(0, 0);
             for (int y = 0; y < DisplaySize.Y; y++)
             {
                 Console.WriteLine(RenderBuffer[y]);
             }
+            ClearBuffer();
         }
     }
 }
