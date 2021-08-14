@@ -15,7 +15,7 @@ namespace SnakeGame.GameObjects
             Elements = new List<Vector2D>();
             Elements.Add(startingPosition);
             Direction = Vector2D.Right;
-            Symbol = (char)178;
+            Symbol = 'X';
         }
 
         /// <summary>
@@ -65,9 +65,10 @@ namespace SnakeGame.GameObjects
         /// </summary>
         public void Move()
         {
-            for (int i = Elements.Count - 1; i > 0; i++)
+            for (int i = Elements.Count - 1; i > 0; i--)
             {
-                Elements[i] = Elements[i - 1];
+                Elements[i].X = Elements[i - 1].X;
+                Elements[i].Y = Elements[i - 1].Y;
             }
 
             Elements[0].Add(Direction);
