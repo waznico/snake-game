@@ -8,9 +8,13 @@
   <ItemGroup>
     <None Remove="GameObjects\" />
     <None Remove="Base\" />
+    <None Remove="Display\" />
+    <None Remove="GameObjects\Collectables\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GameObjects\" />
     <Folder Include="Base\" />
+    <Folder Include="Display\" />
+    <Folder Include="GameObjects\Collectables\" />
   </ItemGroup>
 </Project>
