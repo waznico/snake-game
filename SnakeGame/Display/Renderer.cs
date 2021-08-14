@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SnakeGame.Base;
+using SnakeGame.GameObjects;
 
 namespace SnakeGame.Display
 {
@@ -44,11 +45,10 @@ namespace SnakeGame.Display
         /// <summary>
         /// Adds an object with vector 2D positions to the render buffer. So in the next execution of rendering it'll be visible.
         /// </summary>
-        /// <param name="positions">Positions to render given display elements</param>
-        /// <param name="displayElement">Character to render</param>
-        public void AddObjectToRenderer(IEnumerable<Vector2D> positions, char displayElement)
+        /// <param name="gameObject">Game Object to render</param>
+        public void AddObjectToRenderer(IGameObject gameObject)
         {
-            foreach (var position in positions)
+            foreach (var position in gameObject.Elements)
             {
                 if (IsPositionOverlappingDisplayBorders(position))
                 {
@@ -56,7 +56,7 @@ namespace SnakeGame.Display
                     throw new ArgumentException($"{nameof(ConsoleRenderer)}: Current position is overlapping with display borders. X: {position.X}; Y: {position.Y}");
                 }
 
-                RenderBuffer[position.Y][position.X] = displayElement;
+                RenderBuffer[position.Y][position.X] = gameObject.Symbol;
             }
         }
 

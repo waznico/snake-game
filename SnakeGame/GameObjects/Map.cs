@@ -4,10 +4,11 @@ using SnakeGame.Base;
 
 namespace SnakeGame.GameObjects
 {
-    public class Map
+    public class Map : IGameObject
     {
         public Vector2D MapSize { get; private set; }
-        public List<Vector2D> BorderPositions { get; private set; }
+        public List<Vector2D> Elements { get; private set; }
+        public char Symbol { get; private set; }
 
         public Map(Vector2D mapSize)
         {
@@ -17,7 +18,8 @@ namespace SnakeGame.GameObjects
             }
 
             MapSize = mapSize;
-
+            Elements = new List<Vector2D>();
+            Symbol = '#';
             DefinePositions();
         }
 
@@ -43,10 +45,10 @@ namespace SnakeGame.GameObjects
                 lastCol.Add(new Vector2D(MapSize.X - 1, y));
             }
 
-            BorderPositions.AddRange(firstRow);
-            BorderPositions.AddRange(firstCol);
-            BorderPositions.AddRange(lastRow);
-            BorderPositions.AddRange(lastCol);
+            Elements.AddRange(firstRow);
+            Elements.AddRange(firstCol);
+            Elements.AddRange(lastRow);
+            Elements.AddRange(lastCol);
         }
     }
 }

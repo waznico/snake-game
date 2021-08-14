@@ -3,17 +3,19 @@ using SnakeGame.Base;
 
 namespace SnakeGame.GameObjects
 {
-    public class Snake
+    public class Snake : IGameObject
     {
-        public List<Vector2D> SnakeElements { get; private set; }
-        public Vector2D Head { get { return SnakeElements[0]; } }
+        public List<Vector2D> Elements { get; private set; }
+        public Vector2D Head { get { return Elements[0]; } }
         public Vector2D Direction { get; private set; }
+        public char Symbol { get; private set; }
 
         public Snake(Vector2D startingPosition)
         {
-            SnakeElements = new List<Vector2D>();
-            SnakeElements.Add(startingPosition);
+            Elements = new List<Vector2D>();
+            Elements.Add(startingPosition);
             Direction = Vector2D.Right;
+            Symbol = (char)178;
         }
 
         /// <summary>
@@ -29,7 +31,7 @@ namespace SnakeGame.GameObjects
                 var newElement = new Vector2D(lastElementPos.X, lastElementPos.Y);
                 newElement.Substract(Direction);
 
-                SnakeElements.Add(newElement);
+                Elements.Add(newElement);
             }
         }
 
@@ -39,7 +41,7 @@ namespace SnakeGame.GameObjects
         /// <returns>Position of last element</returns>
         private Vector2D GetLastElement()
         {
-            var lastElementPos = SnakeElements[SnakeElements.Count - 1];
+            var lastElementPos = Elements[Elements.Count - 1];
             return lastElementPos;
         }
     }
