@@ -36,6 +36,44 @@ namespace SnakeGame.GameObjects
         }
 
         /// <summary>
+        /// Change move direction of snake
+        /// </summary>
+        /// <param name="direction">Direction to move on</param>
+        public void ChangeDirection(Direction direction)
+        {
+            switch (direction)
+            {
+                case Base.Direction.Up:
+                    Direction = Vector2D.Up;
+                    break;
+                case Base.Direction.Down:
+                    Direction = Vector2D.Down;
+                    break;
+                case Base.Direction.Left:
+                    Direction = Vector2D.Left;
+                    break;
+                case Base.Direction.Right:
+                    Direction = Vector2D.Right;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Moves snake to next position
+        /// </summary>
+        public void Move()
+        {
+            for (int i = Elements.Count - 1; i > 0; i++)
+            {
+                Elements[i] = Elements[i - 1];
+            }
+
+            Elements[0].Add(Direction);
+        }
+
+        /// <summary>
         /// Returns last element of all snake elements
         /// </summary>
         /// <returns>Position of last element</returns>
