@@ -12,12 +12,20 @@ namespace SnakeGame.Base
             Y = y;
         }
 
+        /// <summary>
+        /// Adds vector to current vector object.
+        /// </summary>
+        /// <param name="other">Vector values to add to current</param>
         public void Add(Vector2D other)
         {
             X += other.X;
             Y += other.Y;
         }
 
+        /// <summary>
+        /// Substracts vector from current vector object.
+        /// </summary>
+        /// <param name="other">Vector values to substract</param>
         public void Substract(Vector2D other)
         {
             X -= other.X;
