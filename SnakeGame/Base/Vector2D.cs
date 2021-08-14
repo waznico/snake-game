@@ -12,6 +12,18 @@ namespace SnakeGame.Base
             Y = y;
         }
 
+        public void Add(Vector2D other)
+        {
+            X += other.X;
+            Y += other.Y;
+        }
+
+        public void Substract(Vector2D other)
+        {
+            X -= other.X;
+            Y -= other.Y;
+        }
+
         public static Vector2D Zero
         {
             get
