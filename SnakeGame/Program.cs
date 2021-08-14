@@ -24,6 +24,8 @@ namespace SnakeGame
 
             var random = new Random();
 
+            var highscore = 0;
+
             ICollectable collectable = CreateCollectable(new Vector2D(random.Next(1, displaySize.X - 1), random.Next(1, displaySize.Y - 1)));
 
             do
@@ -54,6 +56,7 @@ namespace SnakeGame
                 snake.Move();
                 if (snake.Head.X == collectable.Elements[0].X && snake.Head.Y == collectable.Elements[0].Y)
                 {
+                    highscore += collectable.ScoreValue;
                     collectable = CreateCollectable(new Vector2D(random.Next(1, displaySize.X - 1), random.Next(1, displaySize.Y - 1)));
                     snake.Grow(1);
                 }
@@ -64,15 +67,17 @@ namespace SnakeGame
                 if (collisionWithMap != null || collisionWithSelf.Count > 1)
                 {
                     Console.Clear();
-                    Console.WriteLine("Game over!");
+                    Console.WriteLine($"Game over! You gained {highscore} Points.");
+                    Console.ReadKey();
                     break;
                 }
 
                 renderer.AddObjectToRenderer(collectable);
                 renderer.AddObjectToRenderer(snake);
                 renderer.AddObjectToRenderer(map);
-
+                
                 renderer.ExecuteRendering();
+                PrintHighscore(highscore);
                 System.Threading.Thread.Sleep(175);
 
 
@@ -96,6 +101,12 @@ namespace SnakeGame
                     return null;
 
             }
+        }
+
+        private static void PrintHighscore(int currentHighscore)
+        {
+            Console.WriteLine();
+            Console.WriteLine($"\t\t\tCurrent Score: {currentHighscore}");
         }
     }
 }
