@@ -18,14 +18,17 @@ Colored rendering is now supported by the base class `Base/ColoredSymbol`. Here 
 ConsoleColor value in the ExecuteRender method every time when it's different to the previous symbol.
 
 ### Basic types
-Currently there're two basic types in this project:
+Currently there're three basic types in this project:
 1. Direction (enum)
 2. Vector2D
+3. ColoredSymbol
 
 **Direction** contains the four directions you can go and is important to translating user input from the main method into a new snake moving direction. 
 
 **Vector2D** is inspired by Unitys system of working with directions and positions. It holds two values for X and Y positions and can execute very basic arithmetic 
 operations (add and substract). Vector2D also contains definitions for a zero vector and for each direction you can move (up, down, left and right).
+
+**ColoredSymbol** stores a character and its color for a colored output in the console window.
 
 ### Game objects
 All objects which are rendered are game objects. A game object basically contains a list of element positions and a symbol which should be rendered to display it.
