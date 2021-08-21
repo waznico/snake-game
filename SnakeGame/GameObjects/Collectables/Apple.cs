@@ -7,7 +7,7 @@ namespace SnakeGame.GameObjects.Collectables
     public class Apple : ICollectable
     {
         public List<Vector2D> Elements { get; private set; }
-        public char Symbol { get; private set; }
+        public ColoredSymbol Symbol { get; private set; }
 
         public int ScoreValue { get; private set; }
 
@@ -15,7 +15,7 @@ namespace SnakeGame.GameObjects.Collectables
         {
             Elements = new List<Vector2D>();
             Elements.Add(position);
-            Symbol = 'A';
+            Symbol = new ColoredSymbol('A', ConsoleColor.Green);
             ScoreValue = 1;
         }
     }

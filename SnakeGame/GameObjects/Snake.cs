@@ -8,14 +8,14 @@ namespace SnakeGame.GameObjects
         public List<Vector2D> Elements { get; private set; }
         public Vector2D Head { get { return Elements[0]; } }
         public Vector2D Direction { get; private set; }
-        public char Symbol { get; private set; }
+        public ColoredSymbol Symbol { get; private set; }
 
         public Snake(Vector2D startingPosition)
         {
             Elements = new List<Vector2D>();
             Elements.Add(startingPosition);
             Direction = Vector2D.Right;
-            Symbol = 'X';
+            Symbol = new ColoredSymbol('X', System.ConsoleColor.White);
         }
 
         /// <summary>

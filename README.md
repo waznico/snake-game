@@ -14,6 +14,8 @@ A buffer represents all content which should be rendered on the console output. 
 With this buffer you have to seperate visual output and logic like check if there's a collision or fetching and processing user input. After game logic was 
 processed, all objects are added to the buffer and the rendering is executed by the main process. Each time the `ExecuteRendering` method is called the whole
 display output will be overridden by the buffers contend and the buffer will be cleared to prevent unexpected output.
+Colored rendering is now supported by the base class `Base/ColoredSymbol`. Here you can store a char and a ConsoleColor value. The ConsoleRenderer now sets the
+ConsoleColor value in the ExecuteRender method every time when it's different to the previous symbol.
 
 ### Basic types
 Currently there're two basic types in this project:

@@ -11,6 +11,7 @@ namespace SnakeGame
     {
         static void Main(string[] args)
         {
+            Console.CursorVisible = false;
             var displaySize = new Vector2D(100, 50);
             var renderer = new ConsoleRenderer(displaySize);
 
@@ -78,7 +79,7 @@ namespace SnakeGame
                 
                 renderer.ExecuteRendering();
                 PrintHighscore(highscore);
-                System.Threading.Thread.Sleep(175);
+                System.Threading.Thread.Sleep(125);
 
 
             } while (running);
