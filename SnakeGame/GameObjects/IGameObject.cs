@@ -6,6 +6,6 @@ namespace SnakeGame.GameObjects
     public interface IGameObject
     {
         public List<Vector2D> Elements { get; }
-        public char Symbol { get; }
+        public ColoredSymbol Symbol { get; }
     }
 }

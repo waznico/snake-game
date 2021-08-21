@@ -8,7 +8,7 @@ namespace SnakeGame.GameObjects
     {
         public Vector2D MapSize { get; private set; }
         public List<Vector2D> Elements { get; private set; }
-        public char Symbol { get; private set; }
+        public ColoredSymbol Symbol { get; private set; }
 
         public Map(Vector2D mapSize)
         {
@@ -19,7 +19,7 @@ namespace SnakeGame.GameObjects
 
             MapSize = mapSize;
             Elements = new List<Vector2D>();
-            Symbol = '#';
+            Symbol = new ColoredSymbol('#', ConsoleColor.DarkGray);
             DefinePositions();
         }
 

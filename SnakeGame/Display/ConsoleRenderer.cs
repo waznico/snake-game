@@ -7,7 +7,7 @@ namespace SnakeGame.Display
 {
     public class ConsoleRenderer
     {
-        public char[][] RenderBuffer { get; private set; }
+        public ColoredSymbol[][] RenderBuffer { get; private set; }
         public Vector2D DisplaySize { get; private set; }
 
         public ConsoleRenderer(Vector2D displaySize)
@@ -18,11 +18,11 @@ namespace SnakeGame.Display
             }
 
             DisplaySize = displaySize;
-            RenderBuffer = new char[displaySize.Y][];
+            RenderBuffer = new ColoredSymbol[displaySize.Y][];
 
             for (int y = 0; y < displaySize.Y; y++)
             {
-                RenderBuffer[y] = new char[displaySize.X];
+                RenderBuffer[y] = new ColoredSymbol[displaySize.X];
             }
 
             ClearBuffer();
@@ -37,7 +37,7 @@ namespace SnakeGame.Display
             {
                 for (int x = 0; x < DisplaySize.X; x++)
                 {
-                    RenderBuffer[y][x] = ' ';
+                    RenderBuffer[y][x] = new ColoredSymbol(' ', ConsoleColor.White);
                 }
             }
         }
@@ -88,8 +88,17 @@ namespace SnakeGame.Display
             Console.SetCursorPosition(0, 0);
             for (int y = 0; y < DisplaySize.Y; y++)
             {
-                Console.WriteLine(RenderBuffer[y]);
+                for (int x = 0; x < DisplaySize.X; x++)
+                {
+                    if (Console.ForegroundColor != RenderBuffer[y][x].Color)
+                    {
+                        Console.ForegroundColor = RenderBuffer[y][x].Color;
+                    }
+                    Console.Write(RenderBuffer[y][x].Symbol);
+                }
+                Console.WriteLine();
             }
+            Console.ResetColor();
             ClearBuffer();
         }
     }
